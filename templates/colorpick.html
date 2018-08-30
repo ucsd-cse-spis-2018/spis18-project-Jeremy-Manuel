@@ -1,0 +1,22 @@
+{%  extends "layout.html" %}
+
+{%  block title %}Convert ctof{%  endblock %}
+
+{%  block content %}
+
+<p>Enter a color and click "submit" to find complements</p>
+
+<fieldset>
+    <legend>Choose some monster colors</legend>
+
+    <div>
+        <input type="color" id="inColor" name="inColor"
+               value="#FFFFFF" />
+        <label for="head">Head</label>
+        <input type="submit" value="Submit">
+    </div>
+
+</fieldset>
+
+
+{% endblock %}
