@@ -2,7 +2,7 @@ from colorsys import rgb_to_hsv
 from colorsys import hls_to_rgb
 
 def convertRGB(red, green , blue):
-    red = red / 255
+    red = red / 255 # converts the rgb values to floats between 0 to 1 to use the rgb_to_hsv function
     green = green / 255
     blue = blue / 255
     difference = 0
@@ -19,7 +19,7 @@ def convertRGB(red, green , blue):
 
         (hue, saturation, value) = (hue + .5, saturation, value)
 
-    (hue, saturation, value) =  (hue * 360, saturation * 100, value * 100)
+    (hue, saturation, value) =  (hue * 360, saturation * 100, value * 100)  # converts the values to normal hsl values
     print ((hue, saturation, value))
 
 
