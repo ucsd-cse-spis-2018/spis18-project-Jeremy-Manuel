@@ -24,6 +24,9 @@ def render_colorResults():
 
         comp_result = convertRGB(redIn, greenIn, blueIn, 180)
 
+        imageRGB(redIn, greenIn, blueIn, "original.jpg")
+        imageRGB(comp_result[0], comp_result[1], comp_result[2], "complementary.jpg")
+
         # PROCESS COLOR
         return render_template('colorresult.html', inColor=color_result, compColor=comp_result)
     except ValueError:
@@ -65,8 +68,8 @@ def hexToggle(inputString):
 
 def imageRGB (r,g,b, fileName):
     new = Image.new ("RGB", (100, 100), color = (r,g,b))
-    new.save(fileName)
-    new.show(fileName)
+    new.save("static/" + fileName)
+    #new.show("static/" + fileName)
     #Image.open()
 
 if __name__ == "__main__":
