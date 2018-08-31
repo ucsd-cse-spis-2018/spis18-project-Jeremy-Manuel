@@ -1,5 +1,7 @@
 from colorsys import rgb_to_hsv
 from colorsys import hls_to_rgb
+from PIL import Image
+
 
 def convertRGB(red, green , blue):
     red = red / 255 # converts the rgb values to floats between 0 to 1 to use the rgb_to_hsv function
@@ -22,5 +24,10 @@ def convertRGB(red, green , blue):
     (hue, saturation, value) =  (hue * 360, saturation * 100, value * 100)  # converts the values to normal hsl values
     print ((hue, saturation, value))
 
+def imageRGB (r,g,b):
+    x = Image.new("RGB", (100,100), color = 0)
+    Image.open(x)
+
+imageRGB(1,2,3)
 
 convertRGB(35, 212, 154)
