@@ -24,10 +24,12 @@ def convertRGB(red, green , blue):
     (hue, saturation, value) =  (hue * 360, saturation * 100, value * 100)  # converts the values to normal hsl values
     print ((hue, saturation, value))
 
-def imageRGB (r,g,b):
-    x = Image.new("RGB", (100,100), color = 0)
-    Image.open(x)
+def imageRGB (r,g,b, fileName):
+    new = Image.new ("RGB", (100, 100), color = (r,g,b))
+    new.save(fileName)
+    new.show("new.jpg")
+    #Image.open()
 
-imageRGB(1,2,3)
+imageRGB(120,245,53)
 
 convertRGB(35, 212, 154)
