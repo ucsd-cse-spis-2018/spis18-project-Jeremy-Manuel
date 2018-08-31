@@ -27,9 +27,9 @@ def convertRGB(red, green , blue):
 def imageRGB (r,g,b, fileName):
     new = Image.new ("RGB", (100, 100), color = (r,g,b))
     new.save(fileName)
-    new.show("new.jpg")
+    new.show(fileName)
     #Image.open()
 
-imageRGB(120,245,53)
+imageRGB(120,245,53, "test.jpg")
 
 convertRGB(35, 212, 154)
