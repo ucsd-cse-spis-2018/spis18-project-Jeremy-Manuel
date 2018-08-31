@@ -5,10 +5,19 @@
  {%  block content %}
   <h1>Results</h1>
   <div> 
-    <li> Complementary:
-      <img src="./static/original.jpg" title='{{ inColor }}'>
-      <img src="./static/complementary.jpg" title='{{ compColor }}'>
-    </li>
+
+    <table>
+        <tr>
+          <th>Complements: </th>
+          <th><img src="./static/original.jpg" title='{{ inColor }}'></th>
+          <th><img src="./static/complementary.jpg" title='{{ compColor }}'></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>{{ inColor }}</th>
+          <th>{{ compColor }}</th>
+        </tr>
+    </table> 
             
   </div>
  {%  endblock %}

@@ -1,7 +1,7 @@
 from flask import Flask, url_for, render_template, request 
 from colorsys import rgb_to_hls
 from colorsys import hls_to_rgb
-from math import floor
+#from math import round
 from PIL import Image
 
 app = Flask(__name__)
@@ -52,7 +52,7 @@ def convertRGB(red, green, blue, shiftValue):
 
     # Moves color back into RGB output
     (redOut, greenOut, blueOut) = hls_to_rgb(hue, lightness, saturation)
-    (redOut, greenOut, blueOut) =  (floor(redOut*255), floor(greenOut*255), floor(blueOut*255))
+    (redOut, greenOut, blueOut) =  (round(redOut*255), round(greenOut*255), round(blueOut*255))
     return (redOut, greenOut, blueOut)
 
 
