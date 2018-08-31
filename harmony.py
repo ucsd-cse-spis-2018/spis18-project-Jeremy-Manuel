@@ -16,8 +16,13 @@ def render_colorpick():
 @app.route("/colorresult")
 def render_colorResults():
     try:
-        color_result = float(request.args['inColor'])
-        comp_result = 0
+        # Turns HTML hex value into python hex value
+        color_result = hexToggle(request.args['inColor'])
+        # Turns python hex value into three separate RGB values
+        (redIn, greenIn, blueIn) = tuple(int(color_result[i:i+2], 16) for i in (0, 2 ,4))
+
+        comp_result = convertRGB(redIn, greenIn, blueIn, 180)
+
         # PROCESS COLOR
         return render_template('colorResult.html', inColor=color_result, compColor=comp_result)
     except ValueError:
@@ -41,6 +46,22 @@ def convertRGB(red, green, blue, shiftValue):
     (redOut, greenOut, blueOut) = hls_to_rgb(hue, lightness, saturation)
     (redOut, greenOut, blueOut) =  (floor(redOut*255), floor(greenOut*255), floor(blueOut*255))
     return (redOut, greenOut, blueOut)
+
+def hexToggle(inputString):
+    print(type(inputString))
+    if type(inputString) == str:
+        outputHex = inputString.replace("#", "0x")
+        outputHex = int(outputHex, 16)
+        return hex(outputHex)
+    elif type(inputString) == int:
+        outputHex = str(hex(inputString))
+        print(outputHex)
+        outputHex = outputHex.replace("0x", "#")
+        return outputHex
+    else:
+        print("No result")
+        return
+
 
 if __name__ == "__main__":
     app.run(port=5000,debug=False)
