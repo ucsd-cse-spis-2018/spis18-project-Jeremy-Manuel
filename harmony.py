@@ -16,6 +16,7 @@ def render_colorpick():
 def render_colorResults():
     try:
         color_result = float(request.args['inColor'])
+        comp_result = 0
         # PROCESS COLOR
         return render_template('colorResult.html', inColor=color_result, compColor=comp_result)
     except ValueError:
@@ -23,15 +24,13 @@ def render_colorResults():
 
 def convertRGB(red, green , blue):
     difference = 0
-    (hue, lightness, saturation) = colorsys.rgb_to_hls(red, green , blue)
+    (hue, lightness, saturation) = rgb_to_hls(red, green , blue)
 
     if hue >= 180:
         difference = hue - 180
         hue = difference
     else:
         (hue, lightness, saturation) = (hue + 180, lightness, saturation)
-
-    print (colorValue)
 
 if __name__ == "__main__":
     app.run(port=5000,debug=False)
