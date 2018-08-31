@@ -31,7 +31,7 @@ def render_colorResults():
         imageRGB(comp_result[0], comp_result[1], comp_result[2], "complementary.jpg")
 
         # PROCESS COLOR
-        return render_template('colorresult.html', inColor=color_result, compColor=comp_result)
+        return render_template('colorresult.html', inColor=(redIn, greenIn, blueIn), compColor=comp_result)
     except ValueError:
         return request.args['inColor'] + "Sorry: something went wrong."
 

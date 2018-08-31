@@ -3,10 +3,12 @@
  {%  block title %}Home{%  endblock %}
 
  {%  block content %}
-  <h1>Home</h1>
+  <h1>Results</h1>
   <div> 
-      <li> {{ compColor }}</li>
-      <img src="./static/original.jpg">
-      <img src="./static/complementary.jpg">
+    <li> Complementary:
+      <img src="./static/original.jpg" title='{{ inColor }}'>
+      <img src="./static/complementary.jpg" title='{{ compColor }}'>
+    </li>
+            
   </div>
  {%  endblock %}
