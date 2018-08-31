@@ -6,13 +6,16 @@ from PIL import Image
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def render_main():
     return render_template('home.html')
 
+
 @app.route("/colorpick")
 def render_colorpick():
     return render_template('colorpick.html')
+
 
 @app.route("/colorresult")
 def render_colorResults():
@@ -31,6 +34,7 @@ def render_colorResults():
         return render_template('colorresult.html', inColor=color_result, compColor=comp_result)
     except ValueError:
         return request.args['inColor'] + "Sorry: something went wrong."
+
 
 def convertRGB(red, green, blue, shiftValue):
     # Turns RGB and shiftValue into percentages between zero and one
@@ -51,6 +55,7 @@ def convertRGB(red, green, blue, shiftValue):
     (redOut, greenOut, blueOut) =  (floor(redOut*255), floor(greenOut*255), floor(blueOut*255))
     return (redOut, greenOut, blueOut)
 
+
 def hexToggle(inputString):
     print(type(inputString))
     if type(inputString) == str:
@@ -66,11 +71,13 @@ def hexToggle(inputString):
         print("No result")
         return
 
+
 def imageRGB (r,g,b, fileName):
     new = Image.new ("RGB", (100, 100), color = (r,g,b))
     new.save("static/" + fileName)
     #new.show("static/" + fileName)
     #Image.open()
+
 
 if __name__ == "__main__":
     app.run(port=5000,debug=False)
