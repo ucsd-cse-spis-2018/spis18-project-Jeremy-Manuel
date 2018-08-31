@@ -2,6 +2,7 @@ from flask import Flask, url_for, render_template, request
 from colorsys import rgb_to_hls
 from colorsys import hls_to_rgb
 from math import floor
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -19,14 +20,17 @@ def render_colorResults():
         # Turns HTML hex value into python hex value
         color_result = hexToggle(request.args['inColor'])
         # Turns python hex value into three separate RGB values
-        (redIn, greenIn, blueIn) = tuple(int(color_result[i:i+2], 16) for i in (0, 2 ,4))
+        (redIn, greenIn, blueIn) = tuple(int(color_result[i:i+2], 16) for i in (2, 4 ,4))
 
         comp_result = convertRGB(redIn, greenIn, blueIn, 180)
 
+        imageRGB(redIn, greenIn, blueIn, "original.jpg")
+        imageRGB(comp_result[0], comp_result[1], comp_result[2], "complementary.jpg")
+
         # PROCESS COLOR
-        return render_template('colorResult.html', inColor=color_result, compColor=comp_result)
+        return render_template('colorresult.html', inColor=color_result, compColor=comp_result)
     except ValueError:
-        return "Sorry: something went wrong."
+        return request.args['inColor'] + "Sorry: something went wrong."
 
 def convertRGB(red, green, blue, shiftValue):
     # Turns RGB and shiftValue into percentages between zero and one
@@ -62,6 +66,11 @@ def hexToggle(inputString):
         print("No result")
         return
 
+def imageRGB (r,g,b, fileName):
+    new = Image.new ("RGB", (100, 100), color = (r,g,b))
+    new.save("static/" + fileName)
+    #new.show("static/" + fileName)
+    #Image.open()
 
 if __name__ == "__main__":
     app.run(port=5000,debug=False)
