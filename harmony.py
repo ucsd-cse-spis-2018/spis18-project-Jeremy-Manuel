@@ -32,6 +32,9 @@ def render_colorResults():
         splitComp1 = convertRGB(redIn, greenIn, blueIn, 150)
         splitComp2 = convertRGB(redIn, greenIn, blueIn, 210)
 
+        triadic1 = convertRGB(redIn, greenIn, blueIn, 120)
+        triadic2 = convertRGB(redIn, greenIn, blueIn, 300)
+
         imageRGB(redIn, greenIn, blueIn, "original.jpg")
 
         imageRGB(comp_result[0], comp_result[1], comp_result[2], "complementary.jpg")
@@ -42,10 +45,14 @@ def render_colorResults():
         imageRGB(splitComp1[0], splitComp1[1], splitComp1[2], "splitComp1.jpg")
         imageRGB(splitComp2[0], splitComp2[1], splitComp2[2], "splitComp2.jpg")
 
+        imageRGB(triadic1[0], triadic1[1], triadic1[2], "triadic1.jpg")
+        imageRGB(triadic2[0], triadic2[1], triadic2[2], "triadic2.jpg")
+
         # PROCESS COLOR
         return render_template('colorresult.html', inColor=(redIn, greenIn, blueIn), \
                                 compColor=comp_result, an1Color=analog1, an2Color=analog2, \
-                                split1Color=splitComp1, split2Color=splitComp2)
+                                split1Color=splitComp1, split2Color=splitComp2, \
+                                triadic1Color=triadic1, triadic2Color=triadic2)
     except ValueError:
         return request.args['inColor'] + "Sorry: something went wrong."
 
