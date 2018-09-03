@@ -20,17 +20,32 @@ def render_colorpick():
 def render_colorResults():
     try:
         # Turns HTML hex value into python hex value
-        color_result = hexToggle(request.args['inColor'])
+        color_result = request.args['inColor']
         # Turns python hex value into three separate RGB values
-        (redIn, greenIn, blueIn) = tuple(int(color_result[i:i+2], 16) for i in (2, 4 ,4))
+        (redIn, greenIn, blueIn) = hex_to_rgb(color_result)
 
         comp_result = convertRGB(redIn, greenIn, blueIn, 180)
 
+        analog1 = convertRGB(redIn, greenIn, blueIn, 330)
+        analog2 = convertRGB(redIn, greenIn, blueIn, 30)
+
+        splitComp1 = convertRGB(redIn, greenIn, blueIn, 150)
+        splitComp2 = convertRGB(redIn, greenIn, blueIn, 210)
+
         imageRGB(redIn, greenIn, blueIn, "original.jpg")
+
         imageRGB(comp_result[0], comp_result[1], comp_result[2], "complementary.jpg")
 
+        imageRGB(analog1[0], analog1[1], analog1[2], "an1.jpg")
+        imageRGB(analog2[0], analog2[1], analog2[2], "an2.jpg")
+
+        imageRGB(splitComp1[0], splitComp1[1], splitComp1[2], "splitComp1.jpg")
+        imageRGB(splitComp2[0], splitComp2[1], splitComp2[2], "splitComp2.jpg")
+
         # PROCESS COLOR
-        return render_template('colorresult.html', inColor=(redIn, greenIn, blueIn), compColor=comp_result)
+        return render_template('colorresult.html', inColor=(redIn, greenIn, blueIn), \
+                                compColor=comp_result, an1Color=analog1, an2Color=analog2, \
+                                split1Color=splitComp1, split2Color=splitComp2)
     except ValueError:
         return request.args['inColor'] + "Sorry: something went wrong."
 
@@ -54,6 +69,10 @@ def convertRGB(red, green, blue, shiftValue):
     (redOut, greenOut, blueOut) =  (round(redOut*255), round(greenOut*255), round(blueOut*255))
     return (redOut, greenOut, blueOut)
 
+def hex_to_rgb(value):
+    value = value.lstrip('#')
+    lv = len(value)
+    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
 
 def hexToggle(inputString):
     print(type(inputString))
@@ -79,4 +98,4 @@ def imageRGB (r,g,b, fileName):
 
 
 if __name__ == "__main__":
-    app.run(port=5000,debug=False)
+    app.run(port=5000,debug=True)
