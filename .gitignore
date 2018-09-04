@@ -104,3 +104,9 @@ venv.bak/
 .mypy_cache/
 static/complementary.jpg
 static/original.jpg
+static/an1.jpg
+static/an2.jpg
+static/splitComp1.jpg
+static/splitComp2.jpg
+static/triadic1.jpg
+static/triadic2.jpg
