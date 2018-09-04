@@ -5,10 +5,59 @@
  {%  block content %}
   <h1>Results</h1>
   <div> 
-    <li> Complementary:
-      <img src="./static/original.jpg" title='{{ inColor }}'>
-      <img src="./static/complementary.jpg" title='{{ compColor }}'>
-    </li>
+
+    <table>
+        <tr>
+          <th>Complements: </th>
+          <th><img src="./static/original.jpg" title='{{ inColor }}'></th>
+          <th><img src="./static/complementary.jpg" title='{{ compColor }}'></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>{{ inColor }}</th>
+          <th>{{ compColor }}</th>
+        </tr>
+
+	<tr>
+	  <th>Analogous: </th>
+          <th><img src="./static/an1.jpg" title='{{ an2Color }}'></th>
+          <th><img src="./static/original.jpg" title='{{ inColor }}'></th>
+          <th><img src="./static/an2.jpg" title='{{ an1Color }}'></th>
+	</tr>
+        <tr>
+          <th></th>
+          <th>{{ an1Color }}</th>
+          <th>{{ inColor }}</th>
+          <th>{{ an2Color }}</th>
+	</tr>
+
+	<tr>
+	  <th>Split Complementary: </th>
+          <th><img src="./static/splitComp1.jpg" title='{{ split2Color }}'></th>
+          <th><img src="./static/original.jpg" title='{{ inColor }}'></th>
+          <th><img src="./static/splitComp2.jpg" title='{{ split2Color }}'></th>
+	</tr>
+        <tr>
+          <th></th>
+          <th>{{ split1Color }}</th>
+          <th>{{ inColor }}</th>
+          <th>{{ split2Color }}</th>
+	</tr>
+
+	<tr>
+	  <th>Triadic: </th>
+          <th><img src="./static/triadic1.jpg" title='{{ triadic1Color }}'></th>
+          <th><img src="./static/original.jpg" title='{{ inColor }}'></th>
+          <th><img src="./static/triadic2.jpg" title='{{ triadic2Color }}'></th>
+	</tr>
+        <tr>
+          <th></th>
+          <th>{{ triadic1Color }}</th>
+          <th>{{ inColor }}</th>
+          <th>{{ triadic2Color }}</th>
+	</tr>
+
+    </table> 
             
   </div>
  {%  endblock %}
