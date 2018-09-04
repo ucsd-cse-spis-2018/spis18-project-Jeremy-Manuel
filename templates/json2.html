@@ -1,0 +1,22 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').bind('click', function() {
+            $.getJSON('/background_process_test',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+
+
+
+<div class='container'>
+    <h3>Test</h3>
+        <form method="POST" action="<a href=# id=test></a>">
+            <a href=# id=test><input type="submit" class='btn btn-default' name="TEST" value="20" ></a>
+
+        </form>
+</div>
