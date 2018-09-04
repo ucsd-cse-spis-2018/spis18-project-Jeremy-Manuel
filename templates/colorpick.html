@@ -3,21 +3,17 @@
 {%  block title %}Convert ctof{%  endblock %}
 
 {%  block content %}
-
-<p>Enter a color and click "submit" to find complements</p>
-
-<fieldset>
-    <legend>Choose some monster colors</legend>
-
-    <form action="/colorresult">
-        <input type="color" id="inColor" name="inColor"
-               value="#FFFFFF" />
-        <label for="head">Head</label>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-
-</fieldset>
-
+<div style="padding:5px 25px">
+    <p>Enter a color and click "submit" to find complements</p>
+    <fieldset>
+        <form action="/colorresult">
+            <input type="color" id="inColor" name="inColor"
+                value="#FFFFFF" />
+            <label for="head">Pick your color!</label>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+</div>
 
 {% endblock %}
