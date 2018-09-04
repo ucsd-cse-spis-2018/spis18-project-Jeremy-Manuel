@@ -40,11 +40,11 @@ def buttons():
     global value2
 
     runTime = 0
-    """if request.method == 'POST':
+    if request.method == 'POST':
         if request.form.get(pleaseWork) == '':
             pass
         else:
-            value1 = request.form.get(pleaseWork)"""
+            value1 = request.form.get(pleaseWork)
 
     #return render_template("buttons.html")
     """if request.method == 'POST':

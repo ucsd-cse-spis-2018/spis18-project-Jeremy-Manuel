@@ -1,9 +1,9 @@
 import os
 from jinja2 import Environment, FileSystemLoader
 from flask import Flask, send_from_directory, jsonify, request, render_template, url_for
-import flask
-from flask import Flask
 from flask import request
+
+
 
 app = Flask(__name__)
 # app.config.from_object(__name__)
@@ -29,13 +29,14 @@ def gotoCalculator():
 @app.route('/json')
 def json():
     return render_template('json2.html')
-@app.route ('/background_process_test')
+@app.route ('/background_process_test', methods=['GET', 'POST'])
 def background_process_test():
     #tempResult = 0
+    tempResult = request.form["TEST"]
     if request.method == "POST":
-        tempResult = request.form.get("TEST")
+        tempResult = request.form["TEST"]
         print("hhhhh")
-    #print(tempResult)
+    print(tempResult)
     print ("Hello")
     return "nothing"
 
@@ -54,4 +55,4 @@ def afunction():
 
 
 if __name__ == "__main__":
-    app.run(port=5000,debug =False)
+    app.run(port=5000,debug =False, threaded=True)
