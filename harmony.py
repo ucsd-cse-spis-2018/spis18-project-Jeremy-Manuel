@@ -49,9 +49,9 @@ def render_colorResults():
         imageRGB(triadic2[0], triadic2[1], triadic2[2], "triadic2.jpg")
 
         # PROCESS COLOR
-        return render_template('colorresult.html', inColor=(redIn, greenIn, blueIn), \
-                                compColor=comp_result, an1Color=analog1, an2Color=analog2, \
-                                split1Color=splitComp1, split2Color=splitComp2, \
+        return render_template('colorresult.html', inColor=(redIn, greenIn, blueIn),
+                                compColor=comp_result, an1Color=analog1, an2Color=analog2,
+                                split1Color=splitComp1, split2Color=splitComp2,
                                 triadic1Color=triadic1, triadic2Color=triadic2)
     except ValueError:
         return request.args['inColor'] + "Sorry: something went wrong."
