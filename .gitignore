@@ -102,6 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.idea/
 static/complementary.jpg
 static/original.jpg
 static/an1.jpg

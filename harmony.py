@@ -33,7 +33,7 @@ def render_colorResults():
         splitComp2 = convertRGB(redIn, greenIn, blueIn, 210)
 
         triadic1 = convertRGB(redIn, greenIn, blueIn, 120)
-        triadic2 = convertRGB(redIn, greenIn, blueIn, 300)
+        triadic2 = convertRGB(redIn, greenIn, blueIn, -120)
 
         imageRGB(redIn, greenIn, blueIn, "original.jpg")
 
@@ -69,7 +69,7 @@ def convertRGB(red, green, blue, shiftValue):
     hue = hue - shiftValue
     # Fixes negative results for hues
     if hue <= 0:
-        hue = 1.0 - hue
+        hue = 1.0 + hue
 
     # Moves color back into RGB output
     (redOut, greenOut, blueOut) = hls_to_rgb(hue, lightness, saturation)
