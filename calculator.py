@@ -82,6 +82,10 @@ def buttons():
             value2 = ""
             value2 +='9'
             print(value2)
+        elif 'decimal' in request.args:
+            value1 = result
+            value2 += '.'
+            print(value2)
 
     #If you click equals, does the math
     if 'equals' in request.args:
@@ -166,6 +170,9 @@ def buttons():
                 value1 = ""
                 value1 +='9'
                 print(value1)
+            elif 'decimal' in request.args:
+                value1 += '.'
+                print(value1)
 
     #checks if second number 0 needs to be replaced
     elif value2 == "0":
@@ -210,6 +217,10 @@ def buttons():
                 value2 = ""
                 value2 +='9'
                 print(value2)
+            elif 'decimal' in request.args:
+                value2 = ""
+                value2 += '.'
+                print(value2)
 
     # if no numbers need to be replaced, place value
     else:
@@ -244,6 +255,9 @@ def buttons():
             elif 'value09' in request.args:
                 value1 +='9'
                 print(value1)
+            elif 'decimal' in request.args:
+                value1 += '.'
+                print(value1)
         elif first == 0 and result == "":
             if 'value00' in request.args:
                 value2 +='0'
@@ -275,6 +289,10 @@ def buttons():
             elif 'value09' in request.args:
                 value2 +='9'
                 print(value2)
+            elif 'decimal' in request.args:
+                value2 += '.'
+                print(value2)
+
     return render_template("buttons.html")
 
 
