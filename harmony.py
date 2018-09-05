@@ -10,6 +10,10 @@ app = Flask(__name__)
 def render_main():
     return render_template('home.html')
 
+@app.route("/calcHome")
+def render_calc():
+    return render_template('calcpage.html')
+
 
 @app.route("/colorpick")
 def render_colorpick():
