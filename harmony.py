@@ -1,12 +1,16 @@
-from flask import Flask, url_for, render_template, request 
+from flask import Flask, url_for, render_template, request, session
 from colorsys import rgb_to_hls, hls_to_rgb
 from PIL import Image
 
 app = Flask(__name__)
+app.secret_key="NVc9gOs1ek"
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 @app.route("/")
 def render_main():
+    session.clear()
+    session['historyList']=[]
     return render_template('home.html')
 
 @app.route("/calcHome")
