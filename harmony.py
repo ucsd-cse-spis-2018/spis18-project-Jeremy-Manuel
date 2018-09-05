@@ -103,8 +103,6 @@ def hexToggle(inputString):
 def imageRGB (r,g,b, fileName):
     new = Image.new ("RGB", (100, 100), color = (r,g,b))
     new.save("static/" + fileName)
-    #new.show("static/" + fileName)
-    #Image.open()
 
 
 if __name__ == "__main__":
