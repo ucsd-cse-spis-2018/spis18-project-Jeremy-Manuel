@@ -30,7 +30,6 @@ def render_colorResults():
     try:
         # Turns HTML hex value into python hex value
         color_result = request.args['inColor']
-        session['historyList'].append(color_result)
         # Turns python hex value into three separate RGB values
         (redIn, greenIn, blueIn) = hex_to_rgb(color_result)
 
@@ -346,7 +345,7 @@ def buttons():
                 value2 += '.'
                 print(value2)
 
-    return render_template("calcpage.html")
+    return render_template("calcpage.html", result=result)
 
 def convertRGB(red, green, blue, shiftValue):
     # Turns RGB and shiftValue into percentages between zero and one
