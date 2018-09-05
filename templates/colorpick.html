@@ -16,18 +16,4 @@
     </fieldset>
     <br>
 </div>
-
-<div>
-    <h3>Previous Entries: </h3>
-    <fieldset>
-        <form action="/colorresult">
-            {{ session['historyList'] }}
-            {% for entry in session['historyList'][:-5] %}
-              <button type="submit" id="inColor" name="inColor" value="{{ entry }}">
-              <br>
-            {% endfor %}
-        </form>
-    </fieldset>
-</div>
-
 {% endblock %}
