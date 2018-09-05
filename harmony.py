@@ -4,7 +4,7 @@ from colorsys import hls_to_rgb
 from PIL import Image
 
 app = Flask(__name__)
-
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.route("/")
 def render_main():
