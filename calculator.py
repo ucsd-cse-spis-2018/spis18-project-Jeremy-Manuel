@@ -4,10 +4,12 @@ from flask import Flask, url_for, render_template, request
 app = Flask(__name__)
 
 result = ""
-value1= str("0")
+value1= "0"
 value2 = ""
 first = 1
 operation = 0
+more = 0
+
 
 @app.route("/")
 def Hello():
@@ -20,6 +22,7 @@ def buttons():
     global first
     global result
     global operation
+    global more
 
     # clears everything to start over
     if 'clear' in request.args:
@@ -32,67 +35,126 @@ def buttons():
 
     # allows users to continue doing computations
     if result != "":
-        if 'value00' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +="0"
-            print(value2)
-        elif 'value01' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +="1"
-            print(value2)
-        elif 'value02' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +="2"
-            print(value2)
-        elif 'value03' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +="3"
-            print(value2)
-        elif 'value04' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +="4"
-            print(value2)
-        elif 'value05' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +='5'
-            print(value2)
-        elif 'value06' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +='6'
-            print(value2)
-        elif 'value07' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +='7'
-            print(value2)
-        elif 'value08' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +='8'
-            print(value2)
-        elif 'value09' in request.args:
-            value1 = result
-            value2 = ""
-            value2 +='9'
-            print(value2)
-        elif 'decimal' in request.args:
-            value1 = result
-            value2 = ""
-            value2 += '.'
-            print(value2)
+        if more == 0:
+            if 'value00' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +="0"
+                print(value2)
+            elif 'value01' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +="1"
+                print(value2)
+            elif 'value02' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +="2"
+                print(value2)
+            elif 'value03' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +="3"
+                print(value2)
+            elif 'value04' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +="4"
+                print(value2)
+            elif 'value05' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +='5'
+                print(value2)
+            elif 'value06' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +='6'
+                print(value2)
+            elif 'value07' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +='7'
+                print(value2)
+            elif 'value08' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +='8'
+                print(value2)
+            elif 'value09' in request.args:
+                value1 = result
+                more = 1
+                value2 = ""
+                value2 +='9'
+                print(value2)
+            elif 'decimal' in request.args:
+                value1 = result
+                more = 1
+                value2 += '.'
+                print(value2)
+        elif more == 1:
+            if 'value00' in request.args:
+                value1 = result
+                value2 +="0"
+                print(value2)
+            elif 'value01' in request.args:
+                value1 = result
+                value2 +="1"
+                print(value2)
+            elif 'value02' in request.args:
+                value1 = result
+                value2 +="2"
+                print(value2)
+            elif 'value03' in request.args:
+                value1 = result
+                value2 +="3"
+                print(value2)
+            elif 'value04' in request.args:
+                value1 = result
+                value2 +="4"
+                print(value2)
+            elif 'value05' in request.args:
+                value1 = result
+                value2 +='5'
+                print(value2)
+            elif 'value06' in request.args:
+                value1 = result
+                value2 +='6'
+                print(value2)
+            elif 'value07' in request.args:
+                value1 = result
+                value2 +='7'
+                print(value2)
+            elif 'value08' in request.args:
+                value1 = result
+                value2 +='8'
+                print(value2)
+            elif 'value09' in request.args:
+                value1 = result
+                value2 +='9'
+                print(value2)
+            elif 'decimal' in request.args:
+                value1 = result
+                value2 += '.'
+                print(value2)
+
+
 
     #If you click equals, does the math
     if 'equals' in request.args:
         print("equals")
         if value1 != "" and value2 != "":
             print("has both values")
+            more = 0
             if operation == "+":
                 result = float(value1) + float(value2)
                 print (result)
@@ -132,6 +194,7 @@ def buttons():
     if value1 == "0":
         if first == 1:
             if 'value00' in request.args:
+                print("first click")
                 value1 = ""
                 value1 +="0"
                 print(value1)
@@ -294,6 +357,7 @@ def buttons():
             elif 'decimal' in request.args:
                 value2 += '.'
                 print(value2)
+
     return render_template("buttons.html")
 
 
