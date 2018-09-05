@@ -84,6 +84,7 @@ def buttons():
             print(value2)
         elif 'decimal' in request.args:
             value1 = result
+            value2 = ""
             value2 += '.'
             print(value2)
 
@@ -171,6 +172,7 @@ def buttons():
                 value1 +='9'
                 print(value1)
             elif 'decimal' in request.args:
+                value1 = ""
                 value1 += '.'
                 print(value1)
 
@@ -292,7 +294,6 @@ def buttons():
             elif 'decimal' in request.args:
                 value2 += '.'
                 print(value2)
-
     return render_template("buttons.html")
 
 
