@@ -22,7 +22,7 @@
     <fieldset>
         <form action="/colorresult">
             {{ session['historyList'] }}
-            {% for entry in session['historyList'][:5] %}
+            {% for entry in session['historyList'][:-5] %}
               <button type="submit" id="inColor" name="inColor" value="{{ entry }}">
               <br>
             {% endfor %}
