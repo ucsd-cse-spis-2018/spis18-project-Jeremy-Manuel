@@ -239,6 +239,8 @@ def buttons():
                 value1 += '.'
                 print(value1)
 
+
+
     #checks if second number 0 needs to be replaced
     elif value2 == "0":
         if first == 0:
@@ -324,6 +326,7 @@ def buttons():
                 value1 += '.'
                 print(value1)
         elif first == 0 and result == "":
+            print('i clicked plus sign after 0')
             if 'value00' in request.args:
                 value2 +='0'
                 print(value2)
