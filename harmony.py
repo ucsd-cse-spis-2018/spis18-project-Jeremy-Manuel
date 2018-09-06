@@ -70,7 +70,6 @@ def calculate():
     global temp
     global operation
     # htmlresult = str(request.args['telnum'])
-    htmlreturn = temp
     print('htmlreturn')
 
 
