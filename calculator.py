@@ -400,11 +400,7 @@ def calculate():
         elif value == "" and temp != "":
             operation = '/'
 
-
-
-
-
-    return render_template("buttons.html", temp=temp, operation = operation,result = value)
+    return render_template("buttons.html", temp=temp, operation = operation, result = value)
 
 
 if __name__ == "__main__":
