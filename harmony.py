@@ -8,6 +8,13 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 value=""
 temp = ""
 operation = ""
+originalColor = ""
+firstcColor =""
+secondcColor = ""
+oRed = 0
+oGreen= 0
+oBlue=0
+
 
 @app.route("/")
 def render_main():
@@ -25,12 +32,24 @@ def render_colorpick():
 
 @app.route("/colorresult")
 def render_colorResults():
+    global firstcColor
+    global secondcColor
+    global originalColor
+    global oRed
+    global oBlue
+    global oGreen
     try:
         # Turns HTML hex value into python hex value
         color_result = request.args['inColor']
         # Turns python hex value into three separate RGB values
         (redIn, greenIn, blueIn) = hex_to_rgb(color_result)
-
+        oRed = redIn
+        oGreen = greenIn
+        oBlue = blueIn
+        print(oRed)
+        print(oGreen)
+        print(oBlue)
+        originalColor
         comp_result = convertRGB(redIn, greenIn, blueIn, 180)
 
         analog1 = convertRGB(redIn, greenIn, blueIn, 330)
@@ -38,6 +57,15 @@ def render_colorResults():
 
         splitComp1 = convertRGB(redIn, greenIn, blueIn, 150)
         splitComp2 = convertRGB(redIn, greenIn, blueIn, 210)
+        firstcColor = splitComp1
+        secondcColor = splitComp2
+        print("1")
+        print(firstcColor)
+        print('2')
+        print(secondcColor)
+        print('3')
+        print(originalColor)
+
 
         triadic1 = convertRGB(redIn, greenIn, blueIn, 120)
         triadic2 = convertRGB(redIn, greenIn, blueIn, -120)
@@ -68,7 +96,11 @@ def calculate():
     global value
     global temp
     global operation
-
+    global oRed, oGreen, oBlue
+    oRed = oRed
+    print(oRed)
+    print(oGreen)
+    print(oBlue)
     if 'value00' in request.args:
         if temp != "" and operation == "":
             temp = ""
@@ -453,7 +485,7 @@ def calculate():
         elif value == "" and temp != "":
             operation = '/'
 
-    return render_template("calcpage.html", temp=temp, operation = operation,result = value)
+    return render_template("calcpage.html", temp=temp, operation = operation,result = value, firstcColor= firstcColor, secondcColor=secondcColor, originalColor= originalColor, oBlue = oBlue, oRed=oRed , oGreen = oGreen)
 
 def convertRGB(red, green, blue, shiftValue):
     # Turns RGB and shiftValue into percentages between zero and one
