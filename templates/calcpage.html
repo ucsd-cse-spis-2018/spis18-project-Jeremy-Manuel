@@ -1,12 +1,15 @@
 {%  extends "layout.html" %}
 
 {%  block title %}Calculator{%  endblock %}
-
+{% block head %} .button1 {
+    background-color: rgb({{oRed}}, {{oGreen}}, {{oBlue}})
+} {% endblock %}
 {%  block content %}
 
 <div style="padding:0px 10px">
     <fieldset>
         <form action=/calcpage>
+          <p> {{oRed}} {{oGreen}} {{oBlue}} </p>
             <table class="tg">
                 <tr>
                   <th class="tg-0lax" colspan="3"><p>{{temp}} {{operation}} {{result}}</p></th>
@@ -14,8 +17,8 @@
                   <th class="tg-0lax"><button name="negative" value=(-)>(-)</button></th>
                 </tr>
                 <tr>
-                  <td class="tg-0lax"><input type="submit" style="width:100%" name="value07" value="7"></td>
-                  <td class="tg-0lax"><input type="submit" style="width:100%" name="value08"  value="8"></td>
+                  <td class="tg-0lax"><input type="submit" class="button1" style="width:100%" name="value07" value="7"></td>
+                  <td class="tg-0lax"><input type="submit" style="width:100%;background-color:rgb{{originalColor}}" name="value08"  value="8"></td>
                   <td class="tg-0lax"><input type="submit" style="width:100%" name="value09"  value="9"></td>
                   <td class="tg-0lax"><input type="submit" style="width:100%" name="subtraction"  value="-"><br></td>
                 </tr>

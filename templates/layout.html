@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title> {% block title %}{% endblock %} - My Webpage</title>
+    <style>{% block head%}  {% endblock %} </style>
   </head>
 
   <body>
@@ -25,4 +26,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
-
