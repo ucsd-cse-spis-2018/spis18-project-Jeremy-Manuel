@@ -68,9 +68,6 @@ def calculate():
     global value
     global temp
     global operation
-    # htmlresult = str(request.args['telnum'])
-    print('htmlreturn')
-
 
     if 'value00' in request.args:
         if temp != "" and operation == "":
@@ -266,28 +263,28 @@ def calculate():
             if operation == "+":
                 temp = float(value) + float (temp)
                 value = ''
-                # operation = '+'
+                operation = ""
                 print(operation)
                 print('previous')
                 print (temp)
             elif operation == "-":
                 temp = float(temp) - float (value)
                 value = ''
-                # operation = '+'
+                operation = ""
                 print(operation)
                 print('previous')
                 print (temp)
             elif operation == "*":
                 temp = float(value) * float (temp)
                 value = ''
-                # operation = '+'
+                operation = ""
                 print(operation)
                 print('previous')
                 print (temp)
             elif operation == "/":
                 temp = float(temp) / float (value)
                 value = ''
-                # operation = '+'
+                operation = ""
                 print(operation)
                 print('previous')
                 print (temp)
