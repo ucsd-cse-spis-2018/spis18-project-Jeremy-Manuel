@@ -1,9 +1,10 @@
+import os
 from flask import Flask, url_for, render_template, request
 from colorsys import rgb_to_hls, hls_to_rgb
 from PIL import Image
 
 app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 value=""
 temp = ""
